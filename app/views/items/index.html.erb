@@ -1,0 +1,34 @@
+<h1>Listing items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Part number</th>
+      <th>Name</th>
+      <th>On order qty</th>
+      <th>In Inspection qty</th>
+      <th>Stock qty</th>
+      <th>Ncmr qty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.part_number %></td>
+        <td><%= item.name %></td>
+        <td><%= item.on_order_qty %></td>
+        <td><%= item.in_inspection_qty %></td>
+        <td><%= item.stock_qty %></td>
+        <td><%= item.ncmr_qty %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>

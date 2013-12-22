@@ -1,0 +1,2 @@
+module OrdersJsHelper
+end

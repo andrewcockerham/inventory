@@ -1,0 +1,18 @@
+<li class="control-group nested-fields">
+  <div class="controls">
+  	<!-- f.hidden_field :quantity -->
+
+    <%= f.fields_for :item, Item.new do |quantity_item| %>
+     <%= quantity_item.label "Part Number" %> <!-- TVA -->
+     <%= quantity_item.collection_select :part_number, @items, :part_number, :part_number %>
+     <!--       <input list="browsers" name="browser">
+           <datalist id="browsers">
+             <option value="Internet Explorer">
+             <option value="Firefox">
+             <option value="Chrome">
+             <option value="Opera">
+             <option value="Safari">
+           </datalist> -->
+    <% end %>
+  </div>
+</li>
