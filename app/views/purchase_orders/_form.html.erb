@@ -24,10 +24,20 @@
       <%= render 'quantity_fields', f: quantity %>
     <% end %>
   </div>
-  <div class="field">
-    <%= f.label :supplier %><br>
-    <%= f.text_field :supplier %>
-  </div>
+  <% Supplier.all.each do |supplier| %>
+    <%= check_box_tag "purchase_order[supplier_ids][]", supplier.id, 
+    @purchase_order.supplier_ids.include?(supplier.id), id: dom_id(supplier)%>
+    <%= label_tag dom_id(supplier), supplier.name %><br>
+  <% end %>
+<!--   <div class="field">
+    f.fields_for :orders, Order.new do |order| 
+      render 'order_fields', f: order 
+     end 
+  </div> -->
+<!--   <div class="field">
+    f.label :supplier <br>
+    f.text_field :supplier 
+  </div> -->
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>

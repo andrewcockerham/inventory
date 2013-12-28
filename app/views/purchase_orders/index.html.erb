@@ -16,7 +16,9 @@
       <tr>
         <td><%= purchase_order.Date %></td>
         <td><%= link_to purchase_order.purchase_order_number, purchase_order %></td>
-        <td><%= link_to purchase_order.supplier, purchase_order.supplier %></td>
+        <td><!--link_to--><% purchase_order.suppliers.each do |supplier| %>
+          <%= supplier.name %>
+        <% end %></td>
         <td><%= purchase_order.description %></td>
         <td>$<%= purchase_order.amount %></td>
       </tr>

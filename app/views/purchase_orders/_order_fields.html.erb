@@ -1,0 +1,18 @@
+<li class="control-group nested-fields">
+  <div class="controls">
+  	<!-- f.hidden_field :quantity -->
+
+    <%= f.fields_for :supplier, Supplier.new do |order_supplier| %>
+     <%= order_supplier.label "Supplier" %> <!-- TVA -->
+     <%= order_supplier.collection_select :name, @suppliers, :name, :name %>
+     <!--       <input list="browsers" name="browser">
+           <datalist id="browsers">
+             <option value="Internet Explorer">
+             <option value="Firefox">
+             <option value="Chrome">
+             <option value="Opera">
+             <option value="Safari">
+           </datalist> -->
+    <% end %>
+  </div>
+</li>

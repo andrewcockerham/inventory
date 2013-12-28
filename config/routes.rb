@@ -1,5 +1,5 @@
 TVAInventory::Application.routes.draw do
-  resources :orders_js
+  resources :orders
 
   resources :quantities
 

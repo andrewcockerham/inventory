@@ -1,4 +1,5 @@
 class Quantity < ActiveRecord::Base
+	#### This is a join table for PurchaseOrders and Items ####
 
 	# Associations
 	belongs_to :purchase_order

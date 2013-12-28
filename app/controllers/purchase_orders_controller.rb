@@ -26,11 +26,13 @@ class PurchaseOrdersController < ApplicationController
   def new
     @purchase_order = PurchaseOrder.new
     @items = Item.all.order("part_number")
+    @suppliers = Supplier.all.order("name")
   end
 
   # GET /purchase_orders/1/edit
   def edit
     @items = Item.all.order("part_number")
+    @suppliers = Supplier.all.order("name")
   end
 
   # POST /purchase_orders
@@ -38,6 +40,7 @@ class PurchaseOrdersController < ApplicationController
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
     @items = Item.all.order("part_number")
+    @suppliers = Supplier.all.order("name")
     respond_to do |format|
       if @purchase_order.save
         format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully created.' }
@@ -53,6 +56,7 @@ class PurchaseOrdersController < ApplicationController
   # PATCH/PUT /purchase_orders/1.json
   def update
     @items = Item.all.order("part_number")
+    @suppliers = Supplier.all.order("name")
     respond_to do |format|
       if @purchase_order.update(purchase_order_params)
         format.html { redirect_to @purchase_order, notice: 'Purchase order was successfully updated.' }
@@ -83,7 +87,10 @@ class PurchaseOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
       params.require(:purchase_order).permit(:Date, :purchase_order_number, :supplier, :description, :amount,
-                                              :quantities_attributes => [:amount])
+                                              :quantities_attributes => [:amount],  
+                                              :item_attributes => [:part_number], :supplier_ids => [])
+                                              #:orders_attributes => [:id]) 
+                                              #:supplier_attributes => [:name])
     # :part_number
     end
 end

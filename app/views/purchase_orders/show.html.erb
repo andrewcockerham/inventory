@@ -11,7 +11,9 @@
 </p>
 <p>
   <strong>Supplier:</strong>
-  <%= @purchase_order.supplier %>
+  <% @purchase_order.suppliers.each do |supplier| %>
+    <li><%= supplier.name %></li>
+  <% end %>
 </p>
 <p>
   <strong>Description:</strong>
