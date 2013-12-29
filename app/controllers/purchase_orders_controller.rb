@@ -20,11 +20,27 @@ class PurchaseOrdersController < ApplicationController
   # GET /purchase_orders/1
   # GET /purchase_orders/1.json
   def show
+    @q = Quantity.find_all_by_purchase_order_id(params[:id])
+    # @q_amount = 10
   end
 
   # GET /purchase_orders/new
   def new
     @purchase_order = PurchaseOrder.new
+    @todays_date = Date.today.to_s.delete("-")
+    if PurchaseOrder.first
+      @last_date = PurchaseOrder.last.purchase_order_number.split("-")[0]
+      @last_number = PurchaseOrder.last.purchase_order_number.split("-")[1]
+    end
+    if @last_date == @todays_date
+      @next_po_number = @todays_date + "-" + "0" + (@last_number.to_i + 1).to_s
+    else
+      @next_po_number = @todays_date + "-01"
+    end
+    @purchase_order.purchase_order_number = @next_po_number
+    # @purchase_order.save
+    # @q = Quantity.last
+    # @q = Quantity.find_by_purchase_order_id(@purchase_order.id)
     @items = Item.all.order("part_number")
     @suppliers = Supplier.all.order("name")
   end
@@ -87,8 +103,8 @@ class PurchaseOrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
       params.require(:purchase_order).permit(:Date, :purchase_order_number, :supplier, :description, :amount,
-                                              :quantities_attributes => [:amount],  
-                                              :item_attributes => [:part_number], :supplier_ids => [])
+                                              :quantities_attributes => [:amount], :item_ids => [],
+                                              :item_attributes => [], :supplier_ids => [])
                                               #:orders_attributes => [:id]) 
                                               #:supplier_attributes => [:name])
     # :part_number

@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+	#### This is a join table for PurchaseOrders and Suppliers ####
 
 	# Associations
 	belongs_to :purchase_order

@@ -70,6 +70,6 @@ class QuantitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quantity_params
-      params.require(:quantity).permit(:amount, :item, :item_attributes => [:part_number])
+      params.require(:quantity).permit(:amount, :item, :item_attributes => [])
     end
 end

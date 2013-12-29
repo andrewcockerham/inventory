@@ -19,6 +19,10 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <!-- Supplier -->
+  <b><%= f.label :supplier_ids, "Supplier" %></b><br>
+       <%= f.collection_select :supplier_ids, Supplier.order(:name), :id, :name, {}, {multiple: true} %><br>
+
   <div class="field">
     <%= f.label :on_order_qty %><br>
     <%= f.number_field :on_order_qty %>

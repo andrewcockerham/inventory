@@ -1,7 +1,10 @@
 class PurchaseOrder < ActiveRecord::Base
 
+	# Validations
+	validates_uniqueness_of :purchase_order_number
+
 	# Associations
-	has_many :quantities
+	has_many :quantities, dependent: :destroy
 	has_many :items, :through => :quantities
 	has_many :orders
 	has_many :suppliers, :through => :orders

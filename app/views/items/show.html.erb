@@ -30,15 +30,15 @@
   <%= @item.ncmr_qty %>
 </p>
 
-<%= @item.name %> </br>
+<!--  @item.name %> </br>
 Purchase Orders:
 <ul>
- <%= @item.purchase_orders %>
- <% @item.purchase_orders.each do |purchase_order| %>
-   <li><%= purchase_order.purchase_order_number %></li>
- <% end %>
- <%= @item %>
+  @item.purchase_orders %>
+  @item.purchase_orders.each do |purchase_order| %>
+   <li> purchase_order.purchase_order_number %></li>
+  end %>
+  @item %>
 </ul>
-
+ -->
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

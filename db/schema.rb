@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228162117) do
+ActiveRecord::Schema.define(version: 20131228232533) do
 
   create_table "Items", force: true do |t|
     t.integer  "part_number"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131228162117) do
     t.integer  "ncmr_qty"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name_and_number"
   end
 
   add_index "Items", ["name"], name: "index_items_on_name"
@@ -70,6 +71,16 @@ ActiveRecord::Schema.define(version: 20131228162117) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "parts", force: true do |t|
+    t.integer  "item_id"
+    t.integer  "supplier_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "parts", ["item_id"], name: "index_parts_on_item_id"
+  add_index "parts", ["supplier_id"], name: "index_parts_on_supplier_id"
 
   create_table "purchase_orders", force: true do |t|
     t.date     "Date"

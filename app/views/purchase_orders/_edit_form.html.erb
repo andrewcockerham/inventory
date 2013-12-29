@@ -29,15 +29,6 @@
   <!-- <b> Item (multiselect) </b><br> -->
     <b><%= f.label :item_ids, "Item(s)" %></b><br>
     <%= f.collection_select :item_ids, Item.order(:part_number), :id, :name_and_number, {}, {multiple: true} %><br>
-  <b>Quantity</b><br>
-     <!-- f.fields_for :quantities, @q do |quantity| %> -->
-      <!-- f.fields_for @q do |quantity| %>
-       quantity.number_field :amount %><br>
-     end %> -->
-    <!-- @q.amount %><br> -->
-<!--      item_ids.each.do |item| %>
-       f.input :quantities_attributes %>
-     end %> -->
   <!-- <b> Supplier (multiselect)</b><br> -->
     <b><%= f.label :supplier_ids, "Supplier" %></b><br>
     <%= f.collection_select :supplier_ids, Supplier.order(:name), :id, :name, {}, {multiple: true} %><br>
@@ -71,10 +62,8 @@
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </div>
-  <%= button_to 'Create Purchase Order', {:controller => :purchase_orders, 
-             :action => 'create', :id => @purchase_order.id } %>
-<!--     button_to 'Cancel', {:controller => :purchase_orders, 
-              :action => 'destroy', :id => @purchase_order.id }, 
-              :method => :delete %> -->
-  <!--  link_to 'Cancel', purchase_orders_path, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
  <% end %>

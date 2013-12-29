@@ -5,6 +5,7 @@
     <tr>
       <th> Date </th>
       <th> PO number </th>
+      <th> Part Number </th>
       <th> Supplier </th>
       <th> Order Description </th>
       <th> Amount </th>
@@ -16,11 +17,14 @@
       <tr>
         <td><%= purchase_order.Date %></td>
         <td><%= link_to purchase_order.purchase_order_number, purchase_order %></td>
+        <td><% purchase_order.items.each do |item| %>
+          <%= item.part_number %>
+        <% end %></td>
         <td><!--link_to--><% purchase_order.suppliers.each do |supplier| %>
           <%= supplier.name %>
         <% end %></td>
         <td><%= purchase_order.description %></td>
-        <td>$<%= purchase_order.amount %></td>
+        <td> <%= number_to_currency(purchase_order.amount) %></td>
       </tr>
     <% end %>
   </tbody>
