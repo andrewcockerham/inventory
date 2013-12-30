@@ -4,3 +4,4 @@
 
 <%= link_to 'Show', @lot %> |
 <%= link_to 'Back', lots_path %>
+<%= link_to 'Delete', @lot, method: :delete, data: { confirm: 'Are you sure?' } %>

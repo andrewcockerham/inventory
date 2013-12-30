@@ -19,7 +19,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.part_number %></td>
-        <td><%= item.name %></td>
+        <td><%= link_to item.name, item %></td>
         <td><%= item.on_order_qty %></td>
         <td><%= item.in_inspection_qty %></td>
         <td><%= item.stock_qty %></td>

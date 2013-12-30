@@ -15,9 +15,15 @@
     <%= f.label :number %><br>
     <%= f.number_field :number %>
   </div>
-  <div class="field">
-    <%= f.label :part_number %><br>
-    <%= f.text_field :part_number %>
+  <b><%= f.label :item_id, "Item" %></b><br>
+  <%= f.collection_select :item_id, Item.order(:part_number), :id, :name_and_number, {} %><br>
+  <div>
+    <%= f.label :initial_qty, "Initial Quantity" %>
+    <%= f.number_field :initial_qty %>
+  </div>
+  <div>
+    <%= f.label :cleaned, "Ultrasonic Cleaned?" %>
+    <%= f.check_box :cleaned %>
   </div>
   <div class="actions">
     <%= f.submit %>

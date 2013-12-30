@@ -1,5 +1,5 @@
 class Lot < ActiveRecord::Base
 
 	# Associations
-	has_one :item
+	belongs_to :item
 end

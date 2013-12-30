@@ -4,9 +4,10 @@
   <thead>
     <tr>
       <th>Number</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Item</th>
+      <th> Ultrasonic Cleaned? </th>
+      <th> Initial Quantity</th>
+      <th> Current Quantity</th>
     </tr>
   </thead>
 
@@ -14,8 +15,17 @@
     <% @lots.each do |lot| %>
       <tr>
         <td><%= link_to lot.number, lot %></td>
+        <td> <% if lot.item %>
+          <%= link_to lot.item.name_and_number, lot.item %>
+        <% end %></td>
+        <td> <% if lot.cleaned %>
+          <%= lot.cleaned %>
+        <% end %></td>
+        <td> <%= lot.initial_qty %></td>
+        <td> <%= lot.current_qty %></td>
         <td><%= link_to 'Show', lot %></td>
         <td><%= link_to 'Edit', edit_lot_path(lot) %></td>
+        <td> <%= link_to 'Delete', lot, method: :delete, data: {confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

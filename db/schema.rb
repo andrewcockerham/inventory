@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228232533) do
+ActiveRecord::Schema.define(version: 20131230125124) do
 
   create_table "Items", force: true do |t|
     t.integer  "part_number"
@@ -56,7 +56,10 @@ ActiveRecord::Schema.define(version: 20131228232533) do
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "part_number"
+    t.integer  "initial_qty"
+    t.integer  "current_qty"
+    t.integer  "item_id"
+    t.boolean  "cleaned"
   end
 
   create_table "orders", force: true do |t|

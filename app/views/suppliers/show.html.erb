@@ -4,6 +4,12 @@
   <strong>Name:</strong>
   <%= @supplier.name %>
 </p>
-
+<p>
+  <strong>Items:</strong>
+  <% @supplier.items.each do |item| %>
+  	<%= item.name_and_number %>
+  <% end %>
+  <!-- < @supplier.items %> -->
+</p>
 <%= link_to 'Edit', edit_supplier_path(@supplier) %> |
 <%= link_to 'Back', suppliers_path %>

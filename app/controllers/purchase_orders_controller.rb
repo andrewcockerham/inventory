@@ -38,8 +38,9 @@ class PurchaseOrdersController < ApplicationController
       @next_po_number = @todays_date + "-01"
     end
     @purchase_order.purchase_order_number = @next_po_number
-    # @purchase_order.save
-    # @q = Quantity.last
+    # @q = @purchase_order.quantity.build ## something like this to create the Quantity record?
+    @purchase_order.save
+    @q = Quantity.last
     # @q = Quantity.find_by_purchase_order_id(@purchase_order.id)
     @items = Item.all.order("part_number")
     @suppliers = Supplier.all.order("name")
@@ -71,6 +72,7 @@ class PurchaseOrdersController < ApplicationController
   # PATCH/PUT /purchase_orders/1
   # PATCH/PUT /purchase_orders/1.json
   def update
+    # @q = Quantity.last
     @items = Item.all.order("part_number")
     @suppliers = Supplier.all.order("name")
     respond_to do |format|
@@ -102,8 +104,8 @@ class PurchaseOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:Date, :purchase_order_number, :supplier, :description, :amount,
-                                              :quantities_attributes => [:amount], :item_ids => [],
+      params.require(:purchase_order).permit(:Date, :purchase_order_number, :description, :amount,
+                                              :quantities_attributes => [], :item_ids => [], :quantity => [],
                                               :item_attributes => [], :supplier_ids => [])
                                               #:orders_attributes => [:id]) 
                                               #:supplier_attributes => [:name])

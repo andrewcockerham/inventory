@@ -5,9 +5,12 @@
   <%= @lot.number %>
 </p>
 <p>
-  <strong>Part Number:</strong>
-  <%= @lot.part_number %>
+  <strong> Initial Quantity:</strong>
+  <%= @lot.initial_qty %>
 </p>
-
+<p>
+  <strong> Cleaned:</strong>
+  <%= @lot.cleaned %>
+</p>
 <%= link_to 'Edit', edit_lot_path(@lot) %> |
 <%= link_to 'Back', lots_path %>

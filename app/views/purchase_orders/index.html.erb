@@ -20,8 +20,8 @@
         <td><% purchase_order.items.each do |item| %>
           <%= item.part_number %>
         <% end %></td>
-        <td><!--link_to--><% purchase_order.suppliers.each do |supplier| %>
-          <%= supplier.name %>
+        <td><% purchase_order.suppliers.each do |supplier| %>
+          <%= link_to supplier.name, supplier %>
         <% end %></td>
         <td><%= purchase_order.description %></td>
         <td> <%= number_to_currency(purchase_order.amount) %></td>

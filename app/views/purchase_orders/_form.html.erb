@@ -21,19 +21,34 @@
     f.label :purchase_order_number %><br>
     f.text_field :purchase_order_number %>
   </div> -->
- <!--  <div class="field">
-     f.fields_for :quantities, Quantity.new do |quantity|
-      render 'quantity_fields', f: quantity
-     end 
+<!--   <div class="field">
+      f.fields_for :quantities do |quantity| %> Quantity.new
+        render 'quantity_fields', f: quantity %>
+      end %>
   </div> -->
   <!-- <b> Item (multiselect) </b><br> -->
     <b><%= f.label :item_ids, "Item(s)" %></b><br>
     <%= f.collection_select :item_ids, Item.order(:part_number), :id, :name_and_number, {}, {multiple: true} %><br>
   <b>Quantity</b><br>
-     <!-- f.fields_for :quantities, @q do |quantity| %> -->
-      <!-- f.fields_for @q do |quantity| %>
-       quantity.number_field :amount %><br>
+<!--     < f.fields_for :quantities, @purchase_order.quantities.build do |quantity| %>
+      < quantity.number_field :amount %>
+    <end %> #### gives unpermitted parameters: quantities_attributes -->
+
+  <!-- from SO question -->
+    <!-- @purchase_order.quantities.each do |variable| %> -->
+    <!-- @qq = @purchase_order.quantity %> -->
+      <!--      f.fields_for :quantities, variable do |j| %>
+           j.label :amount, "Amount" %>
+         j.input :amount %>
+       end %>
      end %> -->
+      <!-- f.fields_for :quantities, @q do |quantity| %> -->
+      <!-- MY ANSWER -->
+         <%= f.fields_for @q do |quantity| %> 
+          <%=  quantity.number_field :amount %><br>
+          <% end %>
+
+
     <!-- @q.amount %><br> -->
 <!--      item_ids.each.do |item| %>
        f.input :quantities_attributes %>
@@ -73,8 +88,8 @@
   </div>
   <%= button_to 'Create Purchase Order', {:controller => :purchase_orders, 
              :action => 'create', :id => @purchase_order.id } %>
-<!--     button_to 'Cancel', {:controller => :purchase_orders, 
+  <%=  button_to 'Cancel', {:controller => :purchase_orders, 
               :action => 'destroy', :id => @purchase_order.id }, 
-              :method => :delete %> -->
+              :method => :delete %>
   <!--  link_to 'Cancel', purchase_orders_path, method: :delete, data: { confirm: 'Are you sure?' } %> -->
  <% end %>

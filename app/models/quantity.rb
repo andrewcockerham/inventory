@@ -6,4 +6,6 @@ class Quantity < ActiveRecord::Base
 	belongs_to :item 
 
 	accepts_nested_attributes_for :item, :reject_if => :all_blank
+	accepts_nested_attributes_for :purchase_order, :reject_if => :all_blank
+
 end
