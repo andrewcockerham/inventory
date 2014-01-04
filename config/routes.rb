@@ -1,4 +1,6 @@
 TVAInventory::Application.routes.draw do
+  resources :builds
+
   resources :orders
 
   resources :quantities

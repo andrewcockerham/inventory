@@ -1,0 +1,31 @@
+<h1>Listing builds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start date</th>
+      <th>Start qty</th>
+      <th>Yield qty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @builds.each do |build| %>
+      <tr>
+        <td><%= build.start_date %></td>
+        <td><%= build.start_qty %></td>
+        <td><%= build.yield_qty %></td>
+        <td><%= link_to 'Show', build %></td>
+        <td><%= link_to 'Edit', edit_build_path(build) %></td>
+        <td><%= link_to 'Destroy', build, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Build', new_build_path %>

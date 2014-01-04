@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @build.start_date %>
+</p>
+
+<p>
+  <strong>Start qty:</strong>
+  <%= @build.start_qty %>
+</p>
+
+<p>
+  <strong>Yield qty:</strong>
+  <%= @build.yield_qty %>
+</p>
+
+<%= link_to 'Edit', edit_build_path(@build) %> |
+<%= link_to 'Back', builds_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@build) do |f| %>
+  <% if @build.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@build.errors.count, "error") %> prohibited this build from being saved:</h2>
+
+      <ul>
+      <% @build.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :start_qty %><br>
+    <%= f.number_field :start_qty %>
+  </div>
+  <div class="field">
+    <%= f.label :yield_qty %><br>
+    <%= f.number_field :yield_qty %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

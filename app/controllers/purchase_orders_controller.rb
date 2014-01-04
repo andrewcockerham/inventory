@@ -40,7 +40,8 @@ class PurchaseOrdersController < ApplicationController
     @purchase_order.purchase_order_number = @next_po_number
     # @q = @purchase_order.quantity.build ## something like this to create the Quantity record?
     @purchase_order.save
-    @q = Quantity.last
+    @purchase_order.quantities.build
+    #@q = Quantity.last
     # @q = Quantity.find_by_purchase_order_id(@purchase_order.id)
     @items = Item.all.order("part_number")
     @suppliers = Supplier.all.order("name")
@@ -104,11 +105,11 @@ class PurchaseOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def purchase_order_params
-      params.require(:purchase_order).permit(:Date, :purchase_order_number, :description, :amount,
-                                              :quantity => [], :quantities_attributes => [], :item_ids => [], 
-                                              :item_attributes => [], :supplier_ids => [])
-                                              #:orders_attributes => [:id]) 
-                                              #:supplier_attributes => [:name]) 
+      params.require(:purchase_order).permit(:Date, :purchase_order_number, :description, :amount,  
+                                              :count, :quantities_attributes => [:count], # [:count,:id]
+                                              :item_ids => [], :item_attributes => [], :supplier_ids => [])
+                                              #:orders_attributes => [:id]) :quantity,
+                                              #:supplier_attributes => [:name]) :quantity => [],
     # :part_number
     end
 end

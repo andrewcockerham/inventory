@@ -1,8 +1,11 @@
-<li class="control-group nested-fields">
-  <div class="controls">
+<!-- <li class="control-group nested-fields">
+  <div class="controls"> -->
+    <%= f.label :amount %>
+    <%= f.text_area :amount %>
+    <p>quantity fields partial</p>
   	<!-- f.hidden_field :quantity -->
-    <%= f.association :purchase_order %>
-    <%= f.input :amount %>
+ <!--     f.association :purchase_order %>
+     f.input :amount %> -->
     <!--  f.label :amount, "Amount" %>
      f.text_area :amount %> -->
 <!--      f.fields_for :item, Item.new do |quantity_item| %>
@@ -17,5 +20,5 @@
              <option value="Safari">
            </datalist> -->
      <!-- end %> -->
-  </div>
-</li>
+<!--   </div>
+</li> -->
