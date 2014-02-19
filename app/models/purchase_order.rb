@@ -9,6 +9,7 @@ class PurchaseOrder < ActiveRecord::Base
 	has_many :items, :through => :quantities
 	has_many :orders, dependent: :destroy
 	has_many :suppliers, :through => :orders
+	# has_one :supplier
 	has_one :employee
 	# has_one :supplier
 	# has_many :example, :through => 

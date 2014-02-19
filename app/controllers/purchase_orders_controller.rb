@@ -108,7 +108,7 @@ class PurchaseOrdersController < ApplicationController
       params.require(:purchase_order).permit(:Date, :purchase_order_number, :description, :amount,  
                                               :count, :quantities_attributes => [:count], # [:count,:id]
                                               :item_ids => [], :item_attributes => [], :supplier_ids => [])
-                                              #:orders_attributes => [:id]) :quantity,
+                                              #:orders_attributes => [:id]) :quantity,   
                                               #:supplier_attributes => [:name]) :quantity => [],
     # :part_number
     end

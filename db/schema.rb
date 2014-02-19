@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103020225) do
+ActiveRecord::Schema.define(version: 20140219123833) do
 
   create_table "Items", force: true do |t|
     t.integer  "part_number"
@@ -108,8 +108,12 @@ ActiveRecord::Schema.define(version: 20140103020225) do
     t.datetime "updated_at"
     t.integer  "purchase_order_id"
     t.integer  "item_id"
+    t.integer  "count_received"
+    t.integer  "count_remaining"
   end
 
+  add_index "quantities", ["count_received"], name: "index_quantities_on_count_received"
+  add_index "quantities", ["count_remaining"], name: "index_quantities_on_count_remaining"
   add_index "quantities", ["item_id"], name: "index_quantities_on_item_id"
   add_index "quantities", ["purchase_order_id"], name: "index_quantities_on_purchase_order_id"
 
